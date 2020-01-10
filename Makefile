@@ -5,12 +5,13 @@ HDRS = \
 
 SRCS = \
 	   project/src/nonlin_equ.cpp \
-	   project/src/main.cpp
+	   project/src/main.cpp \
+	   project/src/functions.cpp
 
 .PHONY: all clean
 
 all: $(SRCS)
-	$(CXX) -Wall -Werror -I $(HDRS) -o $(TARGET) $(CXXFLAGS) $(SRCS) 
+	$(CXX) -I $(HDRS) -o $(TARGET) $(CXXFLAGS) $(SRCS) 
 	./$(TARGET)
 clean:
 	rm -rf $(TARGET)
