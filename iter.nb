@@ -1,0 +1,3280 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    135021,       3272]
+NotebookOptionsPosition[    134465,       3254]
+NotebookOutlinePosition[    134838,       3270]
+CellTagsIndexPosition[    134795,       3267]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iter", "=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{"\"\<iter.txt\>\"", ",", " ", "Number", ",", " ", 
+     RowBox[{"RecordLists", "\[Rule]", "True"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"n", "=", 
+  RowBox[{
+   RowBox[{"iter", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iter", "=", 
+   RowBox[{"Drop", "[", 
+    RowBox[{"iter", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"iter", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"ReadList", "[", 
+       RowBox[{"\"\<iter.txt\>\"", ",", " ", "Number", ",", " ", 
+        RowBox[{"RecordLists", "\[Rule]", "True"}]}], "]"}], "//", 
+      "Flatten"}], ",", "25"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f1", "=", 
+   RowBox[{
+    SuperscriptBox["x1", "2"], "+", 
+    SuperscriptBox["x2", "2"], "+", "x1", "+", "x2", "-", "8"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f2", "=", 
+   RowBox[{
+    SuperscriptBox["x1", "2"], "+", 
+    SuperscriptBox["x2", "2"], "+", 
+    RowBox[{"x1", " ", "x2"}], "-", "7"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f3", "=", 
+   RowBox[{
+    SuperscriptBox["x1", "2"], "-", 
+    SuperscriptBox["x2", "2"], "-", "15"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"f4", "=", 
+   RowBox[{
+    RowBox[{"x1", " ", "x2"}], "+", "4"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", 
+   FractionBox["20", "n"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", "j"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"-", "10"}], ",", "10", ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", 
+       RowBox[{"-", "10"}], ",", "10", ",", "h"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Table", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"iter", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}], ">", "30"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "1"}], "]"}], "]"}], "-", 
+                RowBox[{"h", "/", "2"}]}], ",", 
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], "-", 
+                RowBox[{"h", "/", "2"}]}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "1"}], "]"}], "]"}], "+", 
+                RowBox[{"h", "/", "2"}]}], ",", 
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], "+", 
+                RowBox[{"h", "/", "2"}]}]}], "}"}]}], "]"}]}], "}"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Opacity", "[", 
+            RowBox[{
+             RowBox[{"iter", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", "j"}], "]"}], "]"}], "/", "30"}], "]"}], ",", 
+           RowBox[{"Rectangle", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "1"}], "]"}], "]"}], "-", 
+                FractionBox["h", "2"]}], ",", 
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], "-", 
+                FractionBox["h", "2"]}]}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "1"}], "]"}], "]"}], "+", 
+                FractionBox["h", "2"]}], ",", 
+               RowBox[{
+                RowBox[{"a", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"i", ",", "j", ",", "2"}], "]"}], "]"}], "+", 
+                FractionBox["h", "2"]}]}], "}"}]}], "]"}]}], "}"}]}], "]"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "2", ",", 
+         RowBox[{"Length", "[", "iter", "]"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"j", ",", "2", ",", 
+         RowBox[{"Length", "[", "iter", "]"}], ",", "1"}], "}"}]}], "]"}], 
+     "}"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"ContourPlot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"f3", "\[Equal]", "0"}], ",", 
+       RowBox[{"f4", "\[Equal]", "0"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x1", ",", 
+       RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x2", ",", 
+       RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJwdyk8oQwEAx/FntaiVFsu0kV7KJLJX25r2R6SWWHra/FtoW+aCUdvMReMg
+JH+mlsSUg1rpJRwVvXZeThKbDbVFttQcWG15v3f49elbP9LhHpwSEAQh4wZD
+YUb/qP3qkkiVNqh6Y11wxLnuhrGUyAPPiuQWvGScTc+cAfF9KxxqKBih36Tt
+gRfCcC+M0hILLKWu7DA4XDcNWXl2ATJ0zgsF7S3LMK6PBuCxLLIBYz+1EThj
+umXgmOXzHaYbsxn4fdP9B+eal8RxTl/ynHd3h6yBD79FKXTnjAp47ZVTfBf2
+DJDw5DuhJpDvgx/jZTQ8mqWscD5pHYXpAdUEDB1k1viuWNyGhpVX3so7RpHg
+dGnK22DpNKGELzqRGq5W73dAqZDS8T/fUz+cDLJm6N+M0FBXb7bCwyq1DRpP
+SAf8B7O81pw=
+  "],
+ CellLabel->
+  "In[1021]:=",ExpressionUUID->"5fdf0b9e-d1fd-4a2c-9bd1-0f6b54accdb2"],
+
+Cell[BoxData["25"], "Output",
+ CellChangeTimes->{
+  3.7879078396925573`*^9, {3.787907870005291*^9, 3.787907944185534*^9}, {
+   3.7879080110373573`*^9, 3.787908040396037*^9}, 3.7879081521804304`*^9, 
+   3.7879082159750795`*^9, 3.787909598392149*^9, 3.787909706198315*^9, 
+   3.787909750546852*^9, {3.787909781370615*^9, 3.7879097954434195`*^9}, {
+   3.787909842676121*^9, 3.7879099060377455`*^9}},
+ CellLabel->
+  "Out[1024]=",ExpressionUUID->"55f31ed3-378e-45d2-9259-a9529098dda6"],
+
+Cell[BoxData[
+ GraphicsBox[{{{
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-48, 5]}, {-9.6, -9.6}],
+        NCache[{Rational[-44, 5], Rational[-44, 5]}, {-8.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-44, 5]}, {-9.6, -8.8}],
+        NCache[{Rational[-44, 5], -8}, {-8.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], -8}, {-9.6, -8}], 
+       NCache[{Rational[-44, 5], Rational[-36, 5]}, {-8.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-36, 5]}, {-9.6, -7.2}],
+        NCache[{Rational[-44, 5], Rational[-32, 5]}, {-8.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-32, 5]}, {-9.6, -6.4}],
+        NCache[{Rational[-44, 5], Rational[-28, 5]}, {-8.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-28, 5]}, {-9.6, -5.6}],
+        NCache[{Rational[-44, 5], Rational[-24, 5]}, {-8.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-24, 5]}, {-9.6, -4.8}],
+        NCache[{Rational[-44, 5], -4}, {-8.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], -4}, {-9.6, -4}], 
+       NCache[{Rational[-44, 5], Rational[-16, 5]}, {-8.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-16, 5]}, {-9.6, -3.2}],
+        NCache[{Rational[-44, 5], Rational[-12, 5]}, {-8.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-12, 5]}, {-9.6, -2.4}],
+        NCache[{Rational[-44, 5], Rational[-8, 5]}, {-8.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-8, 5]}, {-9.6, -1.6}], 
+       NCache[{Rational[-44, 5], Rational[-4, 5]}, {-8.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[-4, 5]}, {-9.6, -0.8}], 
+       NCache[{Rational[-44, 5], 0}, {-8.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], 0}, {-9.6, 0}], 
+       NCache[{Rational[-44, 5], Rational[4, 5]}, {-8.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[4, 5]}, {-9.6, 0.8}], 
+       NCache[{Rational[-44, 5], Rational[8, 5]}, {-8.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[8, 5]}, {-9.6, 1.6}], 
+       NCache[{Rational[-44, 5], Rational[12, 5]}, {-8.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[12, 5]}, {-9.6, 2.4}], 
+       NCache[{Rational[-44, 5], Rational[16, 5]}, {-8.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[16, 5]}, {-9.6, 3.2}], 
+       NCache[{Rational[-44, 5], 4}, {-8.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], 4}, {-9.6, 4}], 
+       NCache[{Rational[-44, 5], Rational[24, 5]}, {-8.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[24, 5]}, {-9.6, 4.8}], 
+       NCache[{Rational[-44, 5], Rational[28, 5]}, {-8.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[28, 5]}, {-9.6, 5.6}], 
+       NCache[{Rational[-44, 5], Rational[32, 5]}, {-8.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[32, 5]}, {-9.6, 6.4}], 
+       NCache[{Rational[-44, 5], Rational[36, 5]}, {-8.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[36, 5]}, {-9.6, 7.2}], 
+       NCache[{Rational[-44, 5], 8}, {-8.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], 8}, {-9.6, 8}], 
+       NCache[{Rational[-44, 5], Rational[44, 5]}, {-8.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-48, 5], Rational[44, 5]}, {-9.6, 8.8}], 
+       NCache[{Rational[-44, 5], Rational[48, 5]}, {-8.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-48, 5]}, {-8.8, -9.6}],
+        NCache[{-8, Rational[-44, 5]}, {-8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[
+       NCache[{Rational[-44, 5], Rational[-44, 5]}, {-8.8, -8.8}], {-8, -8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-44, 5], -8}, {-8.8, -8}], 
+       NCache[{-8, Rational[-36, 5]}, {-8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-36, 5]}, {-8.8, -7.2}],
+        NCache[{-8, Rational[-32, 5]}, {-8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-32, 5]}, {-8.8, -6.4}],
+        NCache[{-8, Rational[-28, 5]}, {-8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-28, 5]}, {-8.8, -5.6}],
+        NCache[{-8, Rational[-24, 5]}, {-8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-44, 5], Rational[-24, 5]}, {-8.8, -4.8}], {-8, -4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], -4}, {-8.8, -4}], 
+       NCache[{-8, Rational[-16, 5]}, {-8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-16, 5]}, {-8.8, -3.2}],
+        NCache[{-8, Rational[-12, 5]}, {-8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-12, 5]}, {-8.8, -2.4}],
+        NCache[{-8, Rational[-8, 5]}, {-8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[-8, 5]}, {-8.8, -1.6}], 
+       NCache[{-8, Rational[-4, 5]}, {-8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-44, 5], Rational[-4, 5]}, {-8.8, -0.8}], {-8, 0}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], 0}, {-8.8, 0}], 
+       NCache[{-8, Rational[4, 5]}, {-8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[4, 5]}, {-8.8, 0.8}], 
+       NCache[{-8, Rational[8, 5]}, {-8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[8, 5]}, {-8.8, 1.6}], 
+       NCache[{-8, Rational[12, 5]}, {-8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[12, 5]}, {-8.8, 2.4}], 
+       NCache[{-8, Rational[16, 5]}, {-8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-44, 5], Rational[16, 5]}, {-8.8, 3.2}], {-8, 4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], 4}, {-8.8, 4}], 
+       NCache[{-8, Rational[24, 5]}, {-8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[24, 5]}, {-8.8, 4.8}], 
+       NCache[{-8, Rational[28, 5]}, {-8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[28, 5]}, {-8.8, 5.6}], 
+       NCache[{-8, Rational[32, 5]}, {-8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[32, 5]}, {-8.8, 6.4}], 
+       NCache[{-8, Rational[36, 5]}, {-8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-44, 5], Rational[36, 5]}, {-8.8, 7.2}], {-8, 8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], 8}, {-8.8, 8}], 
+       NCache[{-8, Rational[44, 5]}, {-8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-44, 5], Rational[44, 5]}, {-8.8, 8.8}], 
+       NCache[{-8, Rational[48, 5]}, {-8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{-8, Rational[-48, 5]}, {-8, -9.6}], 
+       NCache[{Rational[-36, 5], Rational[-44, 5]}, {-7.2, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{-8, Rational[-44, 5]}, {-8, -8.8}], 
+       NCache[{Rational[-36, 5], -8}, {-7.2, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{-8, -8}, 
+       NCache[{Rational[-36, 5], Rational[-36, 5]}, {-7.2, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-8, Rational[-36, 5]}, {-8, -7.2}], 
+       NCache[{Rational[-36, 5], Rational[-32, 5]}, {-7.2, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-8, Rational[-32, 5]}, {-8, -6.4}], 
+       NCache[{Rational[-36, 5], Rational[-28, 5]}, {-7.2, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-8, Rational[-28, 5]}, {-8, -5.6}], 
+       NCache[{Rational[-36, 5], Rational[-24, 5]}, {-7.2, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[-24, 5]}, {-8, -4.8}], 
+       NCache[{Rational[-36, 5], -4}, {-7.2, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{-8, -4}, 
+       NCache[{Rational[-36, 5], Rational[-16, 5]}, {-7.2, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[-16, 5]}, {-8, -3.2}], 
+       NCache[{Rational[-36, 5], Rational[-12, 5]}, {-7.2, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[-12, 5]}, {-8, -2.4}], 
+       NCache[{Rational[-36, 5], Rational[-8, 5]}, {-7.2, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[-8, 5]}, {-8, -1.6}], 
+       NCache[{Rational[-36, 5], Rational[-4, 5]}, {-7.2, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-8, Rational[-4, 5]}, {-8, -0.8}], 
+       NCache[{Rational[-36, 5], 0}, {-7.2, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[{-8, 0}, 
+       NCache[{Rational[-36, 5], Rational[4, 5]}, {-7.2, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-8, Rational[4, 5]}, {-8, 0.8}], 
+       NCache[{Rational[-36, 5], Rational[8, 5]}, {-7.2, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-8, Rational[8, 5]}, {-8, 1.6}], 
+       NCache[{Rational[-36, 5], Rational[12, 5]}, {-7.2, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-8, Rational[12, 5]}, {-8, 2.4}], 
+       NCache[{Rational[-36, 5], Rational[16, 5]}, {-7.2, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-8, Rational[16, 5]}, {-8, 3.2}], 
+       NCache[{Rational[-36, 5], 4}, {-7.2, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{-8, 4}, 
+       NCache[{Rational[-36, 5], Rational[24, 5]}, {-7.2, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[24, 5]}, {-8, 4.8}], 
+       NCache[{Rational[-36, 5], Rational[28, 5]}, {-7.2, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[28, 5]}, {-8, 5.6}], 
+       NCache[{Rational[-36, 5], Rational[32, 5]}, {-7.2, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[32, 5]}, {-8, 6.4}], 
+       NCache[{Rational[-36, 5], Rational[36, 5]}, {-7.2, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[36, 5]}, {-8, 7.2}], 
+       NCache[{Rational[-36, 5], 8}, {-7.2, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{-8, 8}, 
+       NCache[{Rational[-36, 5], Rational[44, 5]}, {-7.2, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-8, Rational[44, 5]}, {-8, 8.8}], 
+       NCache[{Rational[-36, 5], Rational[48, 5]}, {-7.2, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-48, 5]}, {-7.2, -9.6}],
+        NCache[{Rational[-32, 5], Rational[-44, 5]}, {-6.4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-44, 5]}, {-7.2, -8.8}],
+        NCache[{Rational[-32, 5], -8}, {-6.4, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-36, 5], -8}, {-7.2, -8}], 
+       NCache[{Rational[-32, 5], Rational[-36, 5]}, {-6.4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-36, 5]}, {-7.2, -7.2}],
+        NCache[{Rational[-32, 5], Rational[-32, 5]}, {-6.4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-32, 5]}, {-7.2, -6.4}],
+        NCache[{Rational[-32, 5], Rational[-28, 5]}, {-6.4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-28, 5]}, {-7.2, -5.6}],
+        NCache[{Rational[-32, 5], Rational[-24, 5]}, {-6.4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-24, 5]}, {-7.2, -4.8}],
+        NCache[{Rational[-32, 5], -4}, {-6.4, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], -4}, {-7.2, -4}], 
+       NCache[{Rational[-32, 5], Rational[-16, 5]}, {-6.4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-16, 5]}, {-7.2, -3.2}],
+        NCache[{Rational[-32, 5], Rational[-12, 5]}, {-6.4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-12, 5]}, {-7.2, -2.4}],
+        NCache[{Rational[-32, 5], Rational[-8, 5]}, {-6.4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-8, 5]}, {-7.2, -1.6}], 
+       NCache[{Rational[-32, 5], Rational[-4, 5]}, {-6.4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[-4, 5]}, {-7.2, -0.8}], 
+       NCache[{Rational[-32, 5], 0}, {-6.4, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], 0}, {-7.2, 0}], 
+       NCache[{Rational[-32, 5], Rational[4, 5]}, {-6.4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[4, 5]}, {-7.2, 0.8}], 
+       NCache[{Rational[-32, 5], Rational[8, 5]}, {-6.4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[8, 5]}, {-7.2, 1.6}], 
+       NCache[{Rational[-32, 5], Rational[12, 5]}, {-6.4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[12, 5]}, {-7.2, 2.4}], 
+       NCache[{Rational[-32, 5], Rational[16, 5]}, {-6.4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[16, 5]}, {-7.2, 3.2}], 
+       NCache[{Rational[-32, 5], 4}, {-6.4, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-36, 5], 4}, {-7.2, 4}], 
+       NCache[{Rational[-32, 5], Rational[24, 5]}, {-6.4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[24, 5]}, {-7.2, 4.8}], 
+       NCache[{Rational[-32, 5], Rational[28, 5]}, {-6.4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[28, 5]}, {-7.2, 5.6}], 
+       NCache[{Rational[-32, 5], Rational[32, 5]}, {-6.4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[32, 5]}, {-7.2, 6.4}], 
+       NCache[{Rational[-32, 5], Rational[36, 5]}, {-6.4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[36, 5]}, {-7.2, 7.2}], 
+       NCache[{Rational[-32, 5], 8}, {-6.4, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], 8}, {-7.2, 8}], 
+       NCache[{Rational[-32, 5], Rational[44, 5]}, {-6.4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-36, 5], Rational[44, 5]}, {-7.2, 8.8}], 
+       NCache[{Rational[-32, 5], Rational[48, 5]}, {-6.4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-48, 5]}, {-6.4, -9.6}],
+        NCache[{Rational[-28, 5], Rational[-44, 5]}, {-5.6, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-44, 5]}, {-6.4, -8.8}],
+        NCache[{Rational[-28, 5], -8}, {-5.6, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-32, 5], -8}, {-6.4, -8}], 
+       NCache[{Rational[-28, 5], Rational[-36, 5]}, {-5.6, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-36, 5]}, {-6.4, -7.2}],
+        NCache[{Rational[-28, 5], Rational[-32, 5]}, {-5.6, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-32, 5]}, {-6.4, -6.4}],
+        NCache[{Rational[-28, 5], Rational[-28, 5]}, {-5.6, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-28, 5]}, {-6.4, -5.6}],
+        NCache[{Rational[-28, 5], Rational[-24, 5]}, {-5.6, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-24, 5]}, {-6.4, -4.8}],
+        NCache[{Rational[-28, 5], -4}, {-5.6, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], -4}, {-6.4, -4}], 
+       NCache[{Rational[-28, 5], Rational[-16, 5]}, {-5.6, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-16, 5]}, {-6.4, -3.2}],
+        NCache[{Rational[-28, 5], Rational[-12, 5]}, {-5.6, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-12, 5]}, {-6.4, -2.4}],
+        NCache[{Rational[-28, 5], Rational[-8, 5]}, {-5.6, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-8, 5]}, {-6.4, -1.6}], 
+       NCache[{Rational[-28, 5], Rational[-4, 5]}, {-5.6, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[-4, 5]}, {-6.4, -0.8}], 
+       NCache[{Rational[-28, 5], 0}, {-5.6, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], 0}, {-6.4, 0}], 
+       NCache[{Rational[-28, 5], Rational[4, 5]}, {-5.6, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[4, 5]}, {-6.4, 0.8}], 
+       NCache[{Rational[-28, 5], Rational[8, 5]}, {-5.6, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[8, 5]}, {-6.4, 1.6}], 
+       NCache[{Rational[-28, 5], Rational[12, 5]}, {-5.6, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[12, 5]}, {-6.4, 2.4}], 
+       NCache[{Rational[-28, 5], Rational[16, 5]}, {-5.6, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[16, 5]}, {-6.4, 3.2}], 
+       NCache[{Rational[-28, 5], 4}, {-5.6, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-32, 5], 4}, {-6.4, 4}], 
+       NCache[{Rational[-28, 5], Rational[24, 5]}, {-5.6, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[24, 5]}, {-6.4, 4.8}], 
+       NCache[{Rational[-28, 5], Rational[28, 5]}, {-5.6, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[28, 5]}, {-6.4, 5.6}], 
+       NCache[{Rational[-28, 5], Rational[32, 5]}, {-5.6, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[32, 5]}, {-6.4, 6.4}], 
+       NCache[{Rational[-28, 5], Rational[36, 5]}, {-5.6, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[36, 5]}, {-6.4, 7.2}], 
+       NCache[{Rational[-28, 5], 8}, {-5.6, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-32, 5], 8}, {-6.4, 8}], 
+       NCache[{Rational[-28, 5], Rational[44, 5]}, {-5.6, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-32, 5], Rational[44, 5]}, {-6.4, 8.8}], 
+       NCache[{Rational[-28, 5], Rational[48, 5]}, {-5.6, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-48, 5]}, {-5.6, -9.6}],
+        NCache[{Rational[-24, 5], Rational[-44, 5]}, {-4.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-44, 5]}, {-5.6, -8.8}],
+        NCache[{Rational[-24, 5], -8}, {-4.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-28, 5], -8}, {-5.6, -8}], 
+       NCache[{Rational[-24, 5], Rational[-36, 5]}, {-4.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-36, 5]}, {-5.6, -7.2}],
+        NCache[{Rational[-24, 5], Rational[-32, 5]}, {-4.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-32, 5]}, {-5.6, -6.4}],
+        NCache[{Rational[-24, 5], Rational[-28, 5]}, {-4.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-28, 5]}, {-5.6, -5.6}],
+        NCache[{Rational[-24, 5], Rational[-24, 5]}, {-4.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-24, 5]}, {-5.6, -4.8}],
+        NCache[{Rational[-24, 5], -4}, {-4.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], -4}, {-5.6, -4}], 
+       NCache[{Rational[-24, 5], Rational[-16, 5]}, {-4.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-16, 5]}, {-5.6, -3.2}],
+        NCache[{Rational[-24, 5], Rational[-12, 5]}, {-4.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-12, 5]}, {-5.6, -2.4}],
+        NCache[{Rational[-24, 5], Rational[-8, 5]}, {-4.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-8, 5]}, {-5.6, -1.6}], 
+       NCache[{Rational[-24, 5], Rational[-4, 5]}, {-4.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[-4, 5]}, {-5.6, -0.8}], 
+       NCache[{Rational[-24, 5], 0}, {-4.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], 0}, {-5.6, 0}], 
+       NCache[{Rational[-24, 5], Rational[4, 5]}, {-4.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[4, 5]}, {-5.6, 0.8}], 
+       NCache[{Rational[-24, 5], Rational[8, 5]}, {-4.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[8, 5]}, {-5.6, 1.6}], 
+       NCache[{Rational[-24, 5], Rational[12, 5]}, {-4.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[12, 5]}, {-5.6, 2.4}], 
+       NCache[{Rational[-24, 5], Rational[16, 5]}, {-4.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[16, 5]}, {-5.6, 3.2}], 
+       NCache[{Rational[-24, 5], 4}, {-4.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-28, 5], 4}, {-5.6, 4}], 
+       NCache[{Rational[-24, 5], Rational[24, 5]}, {-4.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[24, 5]}, {-5.6, 4.8}], 
+       NCache[{Rational[-24, 5], Rational[28, 5]}, {-4.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[28, 5]}, {-5.6, 5.6}], 
+       NCache[{Rational[-24, 5], Rational[32, 5]}, {-4.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[32, 5]}, {-5.6, 6.4}], 
+       NCache[{Rational[-24, 5], Rational[36, 5]}, {-4.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[36, 5]}, {-5.6, 7.2}], 
+       NCache[{Rational[-24, 5], 8}, {-4.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-28, 5], 8}, {-5.6, 8}], 
+       NCache[{Rational[-24, 5], Rational[44, 5]}, {-4.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-28, 5], Rational[44, 5]}, {-5.6, 8.8}], 
+       NCache[{Rational[-24, 5], Rational[48, 5]}, {-4.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-48, 5]}, {-4.8, -9.6}],
+        NCache[{-4, Rational[-44, 5]}, {-4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-24, 5], Rational[-44, 5]}, {-4.8, -8.8}], {-4, -8}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-24, 5], -8}, {-4.8, -8}], 
+       NCache[{-4, Rational[-36, 5]}, {-4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-36, 5]}, {-4.8, -7.2}],
+        NCache[{-4, Rational[-32, 5]}, {-4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-32, 5]}, {-4.8, -6.4}],
+        NCache[{-4, Rational[-28, 5]}, {-4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-28, 5]}, {-4.8, -5.6}],
+        NCache[{-4, Rational[-24, 5]}, {-4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[
+       NCache[{Rational[-24, 5], Rational[-24, 5]}, {-4.8, -4.8}], {-4, -4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-24, 5], -4}, {-4.8, -4}], 
+       NCache[{-4, Rational[-16, 5]}, {-4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-16, 5]}, {-4.8, -3.2}],
+        NCache[{-4, Rational[-12, 5]}, {-4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-12, 5]}, {-4.8, -2.4}],
+        NCache[{-4, Rational[-8, 5]}, {-4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[-8, 5]}, {-4.8, -1.6}], 
+       NCache[{-4, Rational[-4, 5]}, {-4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[
+       NCache[{Rational[-24, 5], Rational[-4, 5]}, {-4.8, -0.8}], {-4, 0}]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-24, 5], 0}, {-4.8, 0}], 
+       NCache[{-4, Rational[4, 5]}, {-4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[4, 5]}, {-4.8, 0.8}], 
+       NCache[{-4, Rational[8, 5]}, {-4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[8, 5]}, {-4.8, 1.6}], 
+       NCache[{-4, Rational[12, 5]}, {-4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[12, 5]}, {-4.8, 2.4}], 
+       NCache[{-4, Rational[16, 5]}, {-4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[
+       NCache[{Rational[-24, 5], Rational[16, 5]}, {-4.8, 3.2}], {-4, 4}]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-24, 5], 4}, {-4.8, 4}], 
+       NCache[{-4, Rational[24, 5]}, {-4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[24, 5]}, {-4.8, 4.8}], 
+       NCache[{-4, Rational[28, 5]}, {-4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[28, 5]}, {-4.8, 5.6}], 
+       NCache[{-4, Rational[32, 5]}, {-4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[32, 5]}, {-4.8, 6.4}], 
+       NCache[{-4, Rational[36, 5]}, {-4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-24, 5], Rational[36, 5]}, {-4.8, 7.2}], {-4, 8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-24, 5], 8}, {-4.8, 8}], 
+       NCache[{-4, Rational[44, 5]}, {-4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-24, 5], Rational[44, 5]}, {-4.8, 8.8}], 
+       NCache[{-4, Rational[48, 5]}, {-4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{-4, Rational[-48, 5]}, {-4, -9.6}], 
+       NCache[{Rational[-16, 5], Rational[-44, 5]}, {-3.2, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[-44, 5]}, {-4, -8.8}], 
+       NCache[{Rational[-16, 5], -8}, {-3.2, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[{-4, -8}, 
+       NCache[{Rational[-16, 5], Rational[-36, 5]}, {-3.2, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{-4, Rational[-36, 5]}, {-4, -7.2}], 
+       NCache[{Rational[-16, 5], Rational[-32, 5]}, {-3.2, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{-4, Rational[-32, 5]}, {-4, -6.4}], 
+       NCache[{Rational[-16, 5], Rational[-28, 5]}, {-3.2, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{-4, Rational[-28, 5]}, {-4, -5.6}], 
+       NCache[{Rational[-16, 5], Rational[-24, 5]}, {-3.2, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-4, Rational[-24, 5]}, {-4, -4.8}], 
+       NCache[{Rational[-16, 5], -4}, {-3.2, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{-4, -4}, 
+       NCache[{Rational[-16, 5], Rational[-16, 5]}, {-3.2, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[-16, 5]}, {-4, -3.2}], 
+       NCache[{Rational[-16, 5], Rational[-12, 5]}, {-3.2, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[-12, 5]}, {-4, -2.4}], 
+       NCache[{Rational[-16, 5], Rational[-8, 5]}, {-3.2, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[-8, 5]}, {-4, -1.6}], 
+       NCache[{Rational[-16, 5], Rational[-4, 5]}, {-3.2, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-4, Rational[-4, 5]}, {-4, -0.8}], 
+       NCache[{Rational[-16, 5], 0}, {-3.2, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[{-4, 0}, 
+       NCache[{Rational[-16, 5], Rational[4, 5]}, {-3.2, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-4, Rational[4, 5]}, {-4, 0.8}], 
+       NCache[{Rational[-16, 5], Rational[8, 5]}, {-3.2, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-4, Rational[8, 5]}, {-4, 1.6}], 
+       NCache[{Rational[-16, 5], Rational[12, 5]}, {-3.2, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-4, Rational[12, 5]}, {-4, 2.4}], 
+       NCache[{Rational[-16, 5], Rational[16, 5]}, {-3.2, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{-4, Rational[16, 5]}, {-4, 3.2}], 
+       NCache[{Rational[-16, 5], 4}, {-3.2, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{-4, 4}, 
+       NCache[{Rational[-16, 5], Rational[24, 5]}, {-3.2, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[24, 5]}, {-4, 4.8}], 
+       NCache[{Rational[-16, 5], Rational[28, 5]}, {-3.2, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[28, 5]}, {-4, 5.6}], 
+       NCache[{Rational[-16, 5], Rational[32, 5]}, {-3.2, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{-4, Rational[32, 5]}, {-4, 6.4}], 
+       NCache[{Rational[-16, 5], Rational[36, 5]}, {-3.2, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-4, Rational[36, 5]}, {-4, 7.2}], 
+       NCache[{Rational[-16, 5], 8}, {-3.2, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{-4, 8}, 
+       NCache[{Rational[-16, 5], Rational[44, 5]}, {-3.2, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{-4, Rational[44, 5]}, {-4, 8.8}], 
+       NCache[{Rational[-16, 5], Rational[48, 5]}, {-3.2, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[2, 3], 0.6666666666666666]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-48, 5]}, {-3.2, -9.6}],
+        NCache[{Rational[-12, 5], Rational[-44, 5]}, {-2.4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[11, 30], 0.36666666666666664`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-44, 5]}, {-3.2, -8.8}],
+        NCache[{Rational[-12, 5], -8}, {-2.4, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-16, 5], -8}, {-3.2, -8}], 
+       NCache[{Rational[-12, 5], Rational[-36, 5]}, {-2.4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-36, 5]}, {-3.2, -7.2}],
+        NCache[{Rational[-12, 5], Rational[-32, 5]}, {-2.4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-32, 5]}, {-3.2, -6.4}],
+        NCache[{Rational[-12, 5], Rational[-28, 5]}, {-2.4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-28, 5]}, {-3.2, -5.6}],
+        NCache[{Rational[-12, 5], Rational[-24, 5]}, {-2.4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-24, 5]}, {-3.2, -4.8}],
+        NCache[{Rational[-12, 5], -4}, {-2.4, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], -4}, {-3.2, -4}], 
+       NCache[{Rational[-12, 5], Rational[-16, 5]}, {-2.4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-16, 5]}, {-3.2, -3.2}],
+        NCache[{Rational[-12, 5], Rational[-12, 5]}, {-2.4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-12, 5]}, {-3.2, -2.4}],
+        NCache[{Rational[-12, 5], Rational[-8, 5]}, {-2.4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-8, 5]}, {-3.2, -1.6}], 
+       NCache[{Rational[-12, 5], Rational[-4, 5]}, {-2.4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[-4, 5]}, {-3.2, -0.8}], 
+       NCache[{Rational[-12, 5], 0}, {-2.4, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-16, 5], 0}, {-3.2, 0}], 
+       NCache[{Rational[-12, 5], Rational[4, 5]}, {-2.4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[4, 5]}, {-3.2, 0.8}], 
+       NCache[{Rational[-12, 5], Rational[8, 5]}, {-2.4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[8, 5]}, {-3.2, 1.6}], 
+       NCache[{Rational[-12, 5], Rational[12, 5]}, {-2.4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[12, 5]}, {-3.2, 2.4}], 
+       NCache[{Rational[-12, 5], Rational[16, 5]}, {-2.4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[16, 5]}, {-3.2, 3.2}], 
+       NCache[{Rational[-12, 5], 4}, {-2.4, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], 4}, {-3.2, 4}], 
+       NCache[{Rational[-12, 5], Rational[24, 5]}, {-2.4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[24, 5]}, {-3.2, 4.8}], 
+       NCache[{Rational[-12, 5], Rational[28, 5]}, {-2.4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[28, 5]}, {-3.2, 5.6}], 
+       NCache[{Rational[-12, 5], Rational[32, 5]}, {-2.4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[32, 5]}, {-3.2, 6.4}], 
+       NCache[{Rational[-12, 5], Rational[36, 5]}, {-2.4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[36, 5]}, {-3.2, 7.2}], 
+       NCache[{Rational[-12, 5], 8}, {-2.4, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], 8}, {-3.2, 8}], 
+       NCache[{Rational[-12, 5], Rational[44, 5]}, {-2.4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-16, 5], Rational[44, 5]}, {-3.2, 8.8}], 
+       NCache[{Rational[-12, 5], Rational[48, 5]}, {-2.4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-48, 5]}, {-2.4, -9.6}],
+        NCache[{Rational[-8, 5], Rational[-44, 5]}, {-1.6, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-44, 5]}, {-2.4, -8.8}],
+        NCache[{Rational[-8, 5], -8}, {-1.6, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-12, 5], -8}, {-2.4, -8}], 
+       NCache[{Rational[-8, 5], Rational[-36, 5]}, {-1.6, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 3], 0.3333333333333333]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-36, 5]}, {-2.4, -7.2}],
+        NCache[{Rational[-8, 5], Rational[-32, 5]}, {-1.6, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 3], 0.6666666666666666]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-32, 5]}, {-2.4, -6.4}],
+        NCache[{Rational[-8, 5], Rational[-28, 5]}, {-1.6, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 3], 0.3333333333333333]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-28, 5]}, {-2.4, -5.6}],
+        NCache[{Rational[-8, 5], Rational[-24, 5]}, {-1.6, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-24, 5]}, {-2.4, -4.8}],
+        NCache[{Rational[-8, 5], -4}, {-1.6, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], -4}, {-2.4, -4}], 
+       NCache[{Rational[-8, 5], Rational[-16, 5]}, {-1.6, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-16, 5]}, {-2.4, -3.2}],
+        NCache[{Rational[-8, 5], Rational[-12, 5]}, {-1.6, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-12, 5]}, {-2.4, -2.4}],
+        NCache[{Rational[-8, 5], Rational[-8, 5]}, {-1.6, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-8, 5]}, {-2.4, -1.6}], 
+       NCache[{Rational[-8, 5], Rational[-4, 5]}, {-1.6, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[-4, 5]}, {-2.4, -0.8}], 
+       NCache[{Rational[-8, 5], 0}, {-1.6, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], 0}, {-2.4, 0}], 
+       NCache[{Rational[-8, 5], Rational[4, 5]}, {-1.6, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[4, 5]}, {-2.4, 0.8}], 
+       NCache[{Rational[-8, 5], Rational[8, 5]}, {-1.6, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[8, 5]}, {-2.4, 1.6}], 
+       NCache[{Rational[-8, 5], Rational[12, 5]}, {-1.6, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[12, 5]}, {-2.4, 2.4}], 
+       NCache[{Rational[-8, 5], Rational[16, 5]}, {-1.6, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[16, 5]}, {-2.4, 3.2}], 
+       NCache[{Rational[-8, 5], 4}, {-1.6, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], 4}, {-2.4, 4}], 
+       NCache[{Rational[-8, 5], Rational[24, 5]}, {-1.6, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[24, 5]}, {-2.4, 4.8}], 
+       NCache[{Rational[-8, 5], Rational[28, 5]}, {-1.6, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[28, 5]}, {-2.4, 5.6}], 
+       NCache[{Rational[-8, 5], Rational[32, 5]}, {-1.6, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[32, 5]}, {-2.4, 6.4}], 
+       NCache[{Rational[-8, 5], Rational[36, 5]}, {-1.6, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[36, 5]}, {-2.4, 7.2}], 
+       NCache[{Rational[-8, 5], 8}, {-1.6, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], 8}, {-2.4, 8}], 
+       NCache[{Rational[-8, 5], Rational[44, 5]}, {-1.6, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-12, 5], Rational[44, 5]}, {-2.4, 8.8}], 
+       NCache[{Rational[-8, 5], Rational[48, 5]}, {-1.6, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-48, 5]}, {-1.6, -9.6}], 
+       NCache[{Rational[-4, 5], Rational[-44, 5]}, {-0.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-44, 5]}, {-1.6, -8.8}], 
+       NCache[{Rational[-4, 5], -8}, {-0.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], -8}, {-1.6, -8}], 
+       NCache[{Rational[-4, 5], Rational[-36, 5]}, {-0.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-36, 5]}, {-1.6, -7.2}], 
+       NCache[{Rational[-4, 5], Rational[-32, 5]}, {-0.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-32, 5]}, {-1.6, -6.4}], 
+       NCache[{Rational[-4, 5], Rational[-28, 5]}, {-0.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-28, 5]}, {-1.6, -5.6}], 
+       NCache[{Rational[-4, 5], Rational[-24, 5]}, {-0.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-24, 5]}, {-1.6, -4.8}], 
+       NCache[{Rational[-4, 5], -4}, {-0.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-8, 5], -4}, {-1.6, -4}], 
+       NCache[{Rational[-4, 5], Rational[-16, 5]}, {-0.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 3], 0.6666666666666666]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-16, 5]}, {-1.6, -3.2}], 
+       NCache[{Rational[-4, 5], Rational[-12, 5]}, {-0.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-12, 5]}, {-1.6, -2.4}], 
+       NCache[{Rational[-4, 5], Rational[-8, 5]}, {-0.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-8, 5]}, {-1.6, -1.6}], 
+       NCache[{Rational[-4, 5], Rational[-4, 5]}, {-0.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[-4, 5]}, {-1.6, -0.8}], 
+       NCache[{Rational[-4, 5], 0}, {-0.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], 0}, {-1.6, 0}], 
+       NCache[{Rational[-4, 5], Rational[4, 5]}, {-0.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[4, 5]}, {-1.6, 0.8}], 
+       NCache[{Rational[-4, 5], Rational[8, 5]}, {-0.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[8, 5]}, {-1.6, 1.6}], 
+       NCache[{Rational[-4, 5], Rational[12, 5]}, {-0.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[12, 5]}, {-1.6, 2.4}], 
+       NCache[{Rational[-4, 5], Rational[16, 5]}, {-0.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[16, 5]}, {-1.6, 3.2}], 
+       NCache[{Rational[-4, 5], 4}, {-0.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], 4}, {-1.6, 4}], 
+       NCache[{Rational[-4, 5], Rational[24, 5]}, {-0.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[24, 5]}, {-1.6, 4.8}], 
+       NCache[{Rational[-4, 5], Rational[28, 5]}, {-0.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[28, 5]}, {-1.6, 5.6}], 
+       NCache[{Rational[-4, 5], Rational[32, 5]}, {-0.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[32, 5]}, {-1.6, 6.4}], 
+       NCache[{Rational[-4, 5], Rational[36, 5]}, {-0.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[36, 5]}, {-1.6, 7.2}], 
+       NCache[{Rational[-4, 5], 8}, {-0.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[-8, 5], 8}, {-1.6, 8}], 
+       NCache[{Rational[-4, 5], Rational[44, 5]}, {-0.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-8, 5], Rational[44, 5]}, {-1.6, 8.8}], 
+       NCache[{Rational[-4, 5], Rational[48, 5]}, {-0.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-48, 5]}, {-0.8, -9.6}], 
+       NCache[{0, Rational[-44, 5]}, {0, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[
+       NCache[{Rational[-4, 5], Rational[-44, 5]}, {-0.8, -8.8}], {0, -8}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], -8}, {-0.8, -8}], 
+       NCache[{0, Rational[-36, 5]}, {0, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-36, 5]}, {-0.8, -7.2}], 
+       NCache[{0, Rational[-32, 5]}, {0, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-32, 5]}, {-0.8, -6.4}], 
+       NCache[{0, Rational[-28, 5]}, {0, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-28, 5]}, {-0.8, -5.6}], 
+       NCache[{0, Rational[-24, 5]}, {0, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[
+       NCache[{Rational[-4, 5], Rational[-24, 5]}, {-0.8, -4.8}], {0, -4}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], -4}, {-0.8, -4}], 
+       NCache[{0, Rational[-16, 5]}, {0, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-16, 5]}, {-0.8, -3.2}], 
+       NCache[{0, Rational[-12, 5]}, {0, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-12, 5]}, {-0.8, -2.4}], 
+       NCache[{0, Rational[-8, 5]}, {0, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[-8, 5]}, {-0.8, -1.6}], 
+       NCache[{0, Rational[-4, 5]}, {0, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[-4, 5], Rational[-4, 5]}, {-0.8, -0.8}], {0, 0}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 30], 0.03333333333333333]], 
+      RectangleBox[NCache[{Rational[-4, 5], 0}, {-0.8, 0}], 
+       NCache[{0, Rational[4, 5]}, {0, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[4, 5]}, {-0.8, 0.8}], 
+       NCache[{0, Rational[8, 5]}, {0, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[8, 5]}, {-0.8, 1.6}], 
+       NCache[{0, Rational[12, 5]}, {0, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[12, 5]}, {-0.8, 2.4}], 
+       NCache[{0, Rational[16, 5]}, {0, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[
+       NCache[{Rational[-4, 5], Rational[16, 5]}, {-0.8, 3.2}], {0, 4}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], 4}, {-0.8, 4}], 
+       NCache[{0, Rational[24, 5]}, {0, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[24, 5]}, {-0.8, 4.8}], 
+       NCache[{0, Rational[28, 5]}, {0, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[28, 5]}, {-0.8, 5.6}], 
+       NCache[{0, Rational[32, 5]}, {0, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[32, 5]}, {-0.8, 6.4}], 
+       NCache[{0, Rational[36, 5]}, {0, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[
+       NCache[{Rational[-4, 5], Rational[36, 5]}, {-0.8, 7.2}], {0, 8}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], 8}, {-0.8, 8}], 
+       NCache[{0, Rational[44, 5]}, {0, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[-4, 5], Rational[44, 5]}, {-0.8, 8.8}], 
+       NCache[{0, Rational[48, 5]}, {0, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{0, Rational[-48, 5]}, {0, -9.6}], 
+       NCache[{Rational[4, 5], Rational[-44, 5]}, {0.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{0, Rational[-44, 5]}, {0, -8.8}], 
+       NCache[{Rational[4, 5], -8}, {0.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[{0, -8}, 
+       NCache[{Rational[4, 5], Rational[-36, 5]}, {0.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-36, 5]}, {0, -7.2}], 
+       NCache[{Rational[4, 5], Rational[-32, 5]}, {0.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-32, 5]}, {0, -6.4}], 
+       NCache[{Rational[4, 5], Rational[-28, 5]}, {0.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-28, 5]}, {0, -5.6}], 
+       NCache[{Rational[4, 5], Rational[-24, 5]}, {0.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-24, 5]}, {0, -4.8}], 
+       NCache[{Rational[4, 5], -4}, {0.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{0, -4}, 
+       NCache[{Rational[4, 5], Rational[-16, 5]}, {0.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-16, 5]}, {0, -3.2}], 
+       NCache[{Rational[4, 5], Rational[-12, 5]}, {0.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-12, 5]}, {0, -2.4}], 
+       NCache[{Rational[4, 5], Rational[-8, 5]}, {0.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-8, 5]}, {0, -1.6}], 
+       NCache[{Rational[4, 5], Rational[-4, 5]}, {0.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{0, Rational[-4, 5]}, {0, -0.8}], 
+       NCache[{Rational[4, 5], 0}, {0.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{0, 0}, 
+       NCache[{Rational[4, 5], Rational[4, 5]}, {0.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{0, Rational[4, 5]}, {0, 0.8}], 
+       NCache[{Rational[4, 5], Rational[8, 5]}, {0.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{0, Rational[8, 5]}, {0, 1.6}], 
+       NCache[{Rational[4, 5], Rational[12, 5]}, {0.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{0, Rational[12, 5]}, {0, 2.4}], 
+       NCache[{Rational[4, 5], Rational[16, 5]}, {0.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[5, 6], 0.8333333333333334]], 
+      RectangleBox[NCache[{0, Rational[16, 5]}, {0, 3.2}], 
+       NCache[{Rational[4, 5], 4}, {0.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[{0, 4}, 
+       NCache[{Rational[4, 5], Rational[24, 5]}, {0.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{0, Rational[24, 5]}, {0, 4.8}], 
+       NCache[{Rational[4, 5], Rational[28, 5]}, {0.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{0, Rational[28, 5]}, {0, 5.6}], 
+       NCache[{Rational[4, 5], Rational[32, 5]}, {0.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{0, Rational[32, 5]}, {0, 6.4}], 
+       NCache[{Rational[4, 5], Rational[36, 5]}, {0.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{0, Rational[36, 5]}, {0, 7.2}], 
+       NCache[{Rational[4, 5], 8}, {0.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[{0, 8}, 
+       NCache[{Rational[4, 5], Rational[44, 5]}, {0.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{0, Rational[44, 5]}, {0, 8.8}], 
+       NCache[{Rational[4, 5], Rational[48, 5]}, {0.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-48, 5]}, {0.8, -9.6}], 
+       NCache[{Rational[8, 5], Rational[-44, 5]}, {1.6, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-44, 5]}, {0.8, -8.8}], 
+       NCache[{Rational[8, 5], -8}, {1.6, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], -8}, {0.8, -8}], 
+       NCache[{Rational[8, 5], Rational[-36, 5]}, {1.6, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-36, 5]}, {0.8, -7.2}], 
+       NCache[{Rational[8, 5], Rational[-32, 5]}, {1.6, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-32, 5]}, {0.8, -6.4}], 
+       NCache[{Rational[8, 5], Rational[-28, 5]}, {1.6, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-28, 5]}, {0.8, -5.6}], 
+       NCache[{Rational[8, 5], Rational[-24, 5]}, {1.6, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-24, 5]}, {0.8, -4.8}], 
+       NCache[{Rational[8, 5], -4}, {1.6, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], -4}, {0.8, -4}], 
+       NCache[{Rational[8, 5], Rational[-16, 5]}, {1.6, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-16, 5]}, {0.8, -3.2}], 
+       NCache[{Rational[8, 5], Rational[-12, 5]}, {1.6, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-12, 5]}, {0.8, -2.4}], 
+       NCache[{Rational[8, 5], Rational[-8, 5]}, {1.6, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-8, 5]}, {0.8, -1.6}], 
+       NCache[{Rational[8, 5], Rational[-4, 5]}, {1.6, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[-4, 5]}, {0.8, -0.8}], 
+       NCache[{Rational[8, 5], 0}, {1.6, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], 0}, {0.8, 0}], 
+       NCache[{Rational[8, 5], Rational[4, 5]}, {1.6, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[4, 5]}, {0.8, 0.8}], 
+       NCache[{Rational[8, 5], Rational[8, 5]}, {1.6, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[8, 5]}, {0.8, 1.6}], 
+       NCache[{Rational[8, 5], Rational[12, 5]}, {1.6, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[12, 5]}, {0.8, 2.4}], 
+       NCache[{Rational[8, 5], Rational[16, 5]}, {1.6, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[16, 5]}, {0.8, 3.2}], 
+       NCache[{Rational[8, 5], 4}, {1.6, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], 4}, {0.8, 4}], 
+       NCache[{Rational[8, 5], Rational[24, 5]}, {1.6, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[24, 5]}, {0.8, 4.8}], 
+       NCache[{Rational[8, 5], Rational[28, 5]}, {1.6, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 3], 0.3333333333333333]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[28, 5]}, {0.8, 5.6}], 
+       NCache[{Rational[8, 5], Rational[32, 5]}, {1.6, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 10], 0.7]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[32, 5]}, {0.8, 6.4}], 
+       NCache[{Rational[8, 5], Rational[36, 5]}, {1.6, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 3], 0.3333333333333333]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[36, 5]}, {0.8, 7.2}], 
+       NCache[{Rational[8, 5], 8}, {1.6, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[4, 5], 8}, {0.8, 8}], 
+       NCache[{Rational[8, 5], Rational[44, 5]}, {1.6, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[4, 5], Rational[44, 5]}, {0.8, 8.8}], 
+       NCache[{Rational[8, 5], Rational[48, 5]}, {1.6, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-48, 5]}, {1.6, -9.6}], 
+       NCache[{Rational[12, 5], Rational[-44, 5]}, {2.4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-44, 5]}, {1.6, -8.8}], 
+       NCache[{Rational[12, 5], -8}, {2.4, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], -8}, {1.6, -8}], 
+       NCache[{Rational[12, 5], Rational[-36, 5]}, {2.4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-36, 5]}, {1.6, -7.2}], 
+       NCache[{Rational[12, 5], Rational[-32, 5]}, {2.4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-32, 5]}, {1.6, -6.4}], 
+       NCache[{Rational[12, 5], Rational[-28, 5]}, {2.4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-28, 5]}, {1.6, -5.6}], 
+       NCache[{Rational[12, 5], Rational[-24, 5]}, {2.4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-24, 5]}, {1.6, -4.8}], 
+       NCache[{Rational[12, 5], -4}, {2.4, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], -4}, {1.6, -4}], 
+       NCache[{Rational[12, 5], Rational[-16, 5]}, {2.4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-16, 5]}, {1.6, -3.2}], 
+       NCache[{Rational[12, 5], Rational[-12, 5]}, {2.4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-12, 5]}, {1.6, -2.4}], 
+       NCache[{Rational[12, 5], Rational[-8, 5]}, {2.4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-8, 5]}, {1.6, -1.6}], 
+       NCache[{Rational[12, 5], Rational[-4, 5]}, {2.4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[-4, 5]}, {1.6, -0.8}], 
+       NCache[{Rational[12, 5], 0}, {2.4, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[8, 5], 0}, {1.6, 0}], 
+       NCache[{Rational[12, 5], Rational[4, 5]}, {2.4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[4, 5]}, {1.6, 0.8}], 
+       NCache[{Rational[12, 5], Rational[8, 5]}, {2.4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[8, 5]}, {1.6, 1.6}], 
+       NCache[{Rational[12, 5], Rational[12, 5]}, {2.4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[12, 5]}, {1.6, 2.4}], 
+       NCache[{Rational[12, 5], Rational[16, 5]}, {2.4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[16, 5]}, {1.6, 3.2}], 
+       NCache[{Rational[12, 5], 4}, {2.4, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[8, 5], 4}, {1.6, 4}], 
+       NCache[{Rational[12, 5], Rational[24, 5]}, {2.4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[24, 5]}, {1.6, 4.8}], 
+       NCache[{Rational[12, 5], Rational[28, 5]}, {2.4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[28, 5]}, {1.6, 5.6}], 
+       NCache[{Rational[12, 5], Rational[32, 5]}, {2.4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[32, 5]}, {1.6, 6.4}], 
+       NCache[{Rational[12, 5], Rational[36, 5]}, {2.4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[36, 5]}, {1.6, 7.2}], 
+       NCache[{Rational[12, 5], 8}, {2.4, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[3, 10], 0.3]], 
+      RectangleBox[NCache[{Rational[8, 5], 8}, {1.6, 8}], 
+       NCache[{Rational[12, 5], Rational[44, 5]}, {2.4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[11, 30], 0.36666666666666664`]], 
+      RectangleBox[NCache[{Rational[8, 5], Rational[44, 5]}, {1.6, 8.8}], 
+       NCache[{Rational[12, 5], Rational[48, 5]}, {2.4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-48, 5]}, {2.4, -9.6}], 
+       NCache[{Rational[16, 5], Rational[-44, 5]}, {3.2, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-44, 5]}, {2.4, -8.8}], 
+       NCache[{Rational[16, 5], -8}, {3.2, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], -8}, {2.4, -8}], 
+       NCache[{Rational[16, 5], Rational[-36, 5]}, {3.2, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-36, 5]}, {2.4, -7.2}], 
+       NCache[{Rational[16, 5], Rational[-32, 5]}, {3.2, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-32, 5]}, {2.4, -6.4}], 
+       NCache[{Rational[16, 5], Rational[-28, 5]}, {3.2, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-28, 5]}, {2.4, -5.6}], 
+       NCache[{Rational[16, 5], Rational[-24, 5]}, {3.2, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-24, 5]}, {2.4, -4.8}], 
+       NCache[{Rational[16, 5], -4}, {3.2, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], -4}, {2.4, -4}], 
+       NCache[{Rational[16, 5], Rational[-16, 5]}, {3.2, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-16, 5]}, {2.4, -3.2}], 
+       NCache[{Rational[16, 5], Rational[-12, 5]}, {3.2, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-12, 5]}, {2.4, -2.4}], 
+       NCache[{Rational[16, 5], Rational[-8, 5]}, {3.2, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-8, 5]}, {2.4, -1.6}], 
+       NCache[{Rational[16, 5], Rational[-4, 5]}, {3.2, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[-4, 5]}, {2.4, -0.8}], 
+       NCache[{Rational[16, 5], 0}, {3.2, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], 0}, {2.4, 0}], 
+       NCache[{Rational[16, 5], Rational[4, 5]}, {3.2, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[4, 5]}, {2.4, 0.8}], 
+       NCache[{Rational[16, 5], Rational[8, 5]}, {3.2, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[8, 5]}, {2.4, 1.6}], 
+       NCache[{Rational[16, 5], Rational[12, 5]}, {3.2, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[12, 5]}, {2.4, 2.4}], 
+       NCache[{Rational[16, 5], Rational[16, 5]}, {3.2, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[16, 5]}, {2.4, 3.2}], 
+       NCache[{Rational[16, 5], 4}, {3.2, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], 4}, {2.4, 4}], 
+       NCache[{Rational[16, 5], Rational[24, 5]}, {3.2, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[24, 5]}, {2.4, 4.8}], 
+       NCache[{Rational[16, 5], Rational[28, 5]}, {3.2, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[28, 5]}, {2.4, 5.6}], 
+       NCache[{Rational[16, 5], Rational[32, 5]}, {3.2, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[32, 5]}, {2.4, 6.4}], 
+       NCache[{Rational[16, 5], Rational[36, 5]}, {3.2, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[36, 5]}, {2.4, 7.2}], 
+       NCache[{Rational[16, 5], 8}, {3.2, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], 8}, {2.4, 8}], 
+       NCache[{Rational[16, 5], Rational[44, 5]}, {3.2, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[12, 5], Rational[44, 5]}, {2.4, 8.8}], 
+       NCache[{Rational[16, 5], Rational[48, 5]}, {3.2, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-48, 5]}, {3.2, -9.6}], 
+       NCache[{4, Rational[-44, 5]}, {4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[
+       NCache[{Rational[16, 5], Rational[-44, 5]}, {3.2, -8.8}], {4, -8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], -8}, {3.2, -8}], 
+       NCache[{4, Rational[-36, 5]}, {4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-36, 5]}, {3.2, -7.2}], 
+       NCache[{4, Rational[-32, 5]}, {4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-32, 5]}, {3.2, -6.4}], 
+       NCache[{4, Rational[-28, 5]}, {4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-28, 5]}, {3.2, -5.6}], 
+       NCache[{4, Rational[-24, 5]}, {4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[16, 5], Rational[-24, 5]}, {3.2, -4.8}], {4, -4}]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], -4}, {3.2, -4}], 
+       NCache[{4, Rational[-16, 5]}, {4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-16, 5]}, {3.2, -3.2}], 
+       NCache[{4, Rational[-12, 5]}, {4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-12, 5]}, {3.2, -2.4}], 
+       NCache[{4, Rational[-8, 5]}, {4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[-8, 5]}, {3.2, -1.6}], 
+       NCache[{4, Rational[-4, 5]}, {4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[
+       NCache[{Rational[16, 5], Rational[-4, 5]}, {3.2, -0.8}], {4, 0}]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], 0}, {3.2, 0}], 
+       NCache[{4, Rational[4, 5]}, {4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[4, 5]}, {3.2, 0.8}], 
+       NCache[{4, Rational[8, 5]}, {4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[8, 5]}, {3.2, 1.6}], 
+       NCache[{4, Rational[12, 5]}, {4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[12, 5]}, {3.2, 2.4}], 
+       NCache[{4, Rational[16, 5]}, {4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[16, 5], Rational[16, 5]}, {3.2, 3.2}], {4, 4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[16, 5], 4}, {3.2, 4}], 
+       NCache[{4, Rational[24, 5]}, {4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[24, 5]}, {3.2, 4.8}], 
+       NCache[{4, Rational[28, 5]}, {4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[28, 5]}, {3.2, 5.6}], 
+       NCache[{4, Rational[32, 5]}, {4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[32, 5]}, {3.2, 6.4}], 
+       NCache[{4, Rational[36, 5]}, {4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[
+       NCache[{Rational[16, 5], Rational[36, 5]}, {3.2, 7.2}], {4, 8}]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[16, 5], 8}, {3.2, 8}], 
+       NCache[{4, Rational[44, 5]}, {4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[4, 15], 0.26666666666666666`]], 
+      RectangleBox[NCache[{Rational[16, 5], Rational[44, 5]}, {3.2, 8.8}], 
+       NCache[{4, Rational[48, 5]}, {4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{4, Rational[-48, 5]}, {4, -9.6}], 
+       NCache[{Rational[24, 5], Rational[-44, 5]}, {4.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{4, Rational[-44, 5]}, {4, -8.8}], 
+       NCache[{Rational[24, 5], -8}, {4.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{4, -8}, 
+       NCache[{Rational[24, 5], Rational[-36, 5]}, {4.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[-36, 5]}, {4, -7.2}], 
+       NCache[{Rational[24, 5], Rational[-32, 5]}, {4.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[-32, 5]}, {4, -6.4}], 
+       NCache[{Rational[24, 5], Rational[-28, 5]}, {4.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[-28, 5]}, {4, -5.6}], 
+       NCache[{Rational[24, 5], Rational[-24, 5]}, {4.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[-24, 5]}, {4, -4.8}], 
+       NCache[{Rational[24, 5], -4}, {4.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[{4, -4}, 
+       NCache[{Rational[24, 5], Rational[-16, 5]}, {4.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{4, Rational[-16, 5]}, {4, -3.2}], 
+       NCache[{Rational[24, 5], Rational[-12, 5]}, {4.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{4, Rational[-12, 5]}, {4, -2.4}], 
+       NCache[{Rational[24, 5], Rational[-8, 5]}, {4.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{4, Rational[-8, 5]}, {4, -1.6}], 
+       NCache[{Rational[24, 5], Rational[-4, 5]}, {4.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 10], 0.1]], 
+      RectangleBox[NCache[{4, Rational[-4, 5]}, {4, -0.8}], 
+       NCache[{Rational[24, 5], 0}, {4.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[{4, 0}, 
+       NCache[{Rational[24, 5], Rational[4, 5]}, {4.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{4, Rational[4, 5]}, {4, 0.8}], 
+       NCache[{Rational[24, 5], Rational[8, 5]}, {4.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{4, Rational[8, 5]}, {4, 1.6}], 
+       NCache[{Rational[24, 5], Rational[12, 5]}, {4.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[12, 5]}, {4, 2.4}], 
+       NCache[{Rational[24, 5], Rational[16, 5]}, {4.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{4, Rational[16, 5]}, {4, 3.2}], 
+       NCache[{Rational[24, 5], 4}, {4.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{4, 4}, 
+       NCache[{Rational[24, 5], Rational[24, 5]}, {4.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{4, Rational[24, 5]}, {4, 4.8}], 
+       NCache[{Rational[24, 5], Rational[28, 5]}, {4.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{4, Rational[28, 5]}, {4, 5.6}], 
+       NCache[{Rational[24, 5], Rational[32, 5]}, {4.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{4, Rational[32, 5]}, {4, 6.4}], 
+       NCache[{Rational[24, 5], Rational[36, 5]}, {4.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{4, Rational[36, 5]}, {4, 7.2}], 
+       NCache[{Rational[24, 5], 8}, {4.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[{4, 8}, 
+       NCache[{Rational[24, 5], Rational[44, 5]}, {4.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{4, Rational[44, 5]}, {4, 8.8}], 
+       NCache[{Rational[24, 5], Rational[48, 5]}, {4.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-48, 5]}, {4.8, -9.6}], 
+       NCache[{Rational[28, 5], Rational[-44, 5]}, {5.6, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-44, 5]}, {4.8, -8.8}], 
+       NCache[{Rational[28, 5], -8}, {5.6, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], -8}, {4.8, -8}], 
+       NCache[{Rational[28, 5], Rational[-36, 5]}, {5.6, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-36, 5]}, {4.8, -7.2}], 
+       NCache[{Rational[28, 5], Rational[-32, 5]}, {5.6, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-32, 5]}, {4.8, -6.4}], 
+       NCache[{Rational[28, 5], Rational[-28, 5]}, {5.6, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-28, 5]}, {4.8, -5.6}], 
+       NCache[{Rational[28, 5], Rational[-24, 5]}, {5.6, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-24, 5]}, {4.8, -4.8}], 
+       NCache[{Rational[28, 5], -4}, {5.6, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], -4}, {4.8, -4}], 
+       NCache[{Rational[28, 5], Rational[-16, 5]}, {5.6, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-16, 5]}, {4.8, -3.2}], 
+       NCache[{Rational[28, 5], Rational[-12, 5]}, {5.6, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-12, 5]}, {4.8, -2.4}], 
+       NCache[{Rational[28, 5], Rational[-8, 5]}, {5.6, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-8, 5]}, {4.8, -1.6}], 
+       NCache[{Rational[28, 5], Rational[-4, 5]}, {5.6, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[-4, 5]}, {4.8, -0.8}], 
+       NCache[{Rational[28, 5], 0}, {5.6, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], 0}, {4.8, 0}], 
+       NCache[{Rational[28, 5], Rational[4, 5]}, {5.6, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[4, 5]}, {4.8, 0.8}], 
+       NCache[{Rational[28, 5], Rational[8, 5]}, {5.6, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[8, 5]}, {4.8, 1.6}], 
+       NCache[{Rational[28, 5], Rational[12, 5]}, {5.6, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[12, 5]}, {4.8, 2.4}], 
+       NCache[{Rational[28, 5], Rational[16, 5]}, {5.6, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[16, 5]}, {4.8, 3.2}], 
+       NCache[{Rational[28, 5], 4}, {5.6, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[24, 5], 4}, {4.8, 4}], 
+       NCache[{Rational[28, 5], Rational[24, 5]}, {5.6, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[24, 5]}, {4.8, 4.8}], 
+       NCache[{Rational[28, 5], Rational[28, 5]}, {5.6, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[28, 5]}, {4.8, 5.6}], 
+       NCache[{Rational[28, 5], Rational[32, 5]}, {5.6, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[32, 5]}, {4.8, 6.4}], 
+       NCache[{Rational[28, 5], Rational[36, 5]}, {5.6, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[36, 5]}, {4.8, 7.2}], 
+       NCache[{Rational[28, 5], 8}, {5.6, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[24, 5], 8}, {4.8, 8}], 
+       NCache[{Rational[28, 5], Rational[44, 5]}, {5.6, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[24, 5], Rational[44, 5]}, {4.8, 8.8}], 
+       NCache[{Rational[28, 5], Rational[48, 5]}, {5.6, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-48, 5]}, {5.6, -9.6}], 
+       NCache[{Rational[32, 5], Rational[-44, 5]}, {6.4, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-44, 5]}, {5.6, -8.8}], 
+       NCache[{Rational[32, 5], -8}, {6.4, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], -8}, {5.6, -8}], 
+       NCache[{Rational[32, 5], Rational[-36, 5]}, {6.4, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-36, 5]}, {5.6, -7.2}], 
+       NCache[{Rational[32, 5], Rational[-32, 5]}, {6.4, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-32, 5]}, {5.6, -6.4}], 
+       NCache[{Rational[32, 5], Rational[-28, 5]}, {6.4, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-28, 5]}, {5.6, -5.6}], 
+       NCache[{Rational[32, 5], Rational[-24, 5]}, {6.4, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-24, 5]}, {5.6, -4.8}], 
+       NCache[{Rational[32, 5], -4}, {6.4, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], -4}, {5.6, -4}], 
+       NCache[{Rational[32, 5], Rational[-16, 5]}, {6.4, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-16, 5]}, {5.6, -3.2}], 
+       NCache[{Rational[32, 5], Rational[-12, 5]}, {6.4, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-12, 5]}, {5.6, -2.4}], 
+       NCache[{Rational[32, 5], Rational[-8, 5]}, {6.4, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-8, 5]}, {5.6, -1.6}], 
+       NCache[{Rational[32, 5], Rational[-4, 5]}, {6.4, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[-4, 5]}, {5.6, -0.8}], 
+       NCache[{Rational[32, 5], 0}, {6.4, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], 0}, {5.6, 0}], 
+       NCache[{Rational[32, 5], Rational[4, 5]}, {6.4, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[4, 5]}, {5.6, 0.8}], 
+       NCache[{Rational[32, 5], Rational[8, 5]}, {6.4, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[8, 5]}, {5.6, 1.6}], 
+       NCache[{Rational[32, 5], Rational[12, 5]}, {6.4, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[12, 5]}, {5.6, 2.4}], 
+       NCache[{Rational[32, 5], Rational[16, 5]}, {6.4, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[16, 5]}, {5.6, 3.2}], 
+       NCache[{Rational[32, 5], 4}, {6.4, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], 4}, {5.6, 4}], 
+       NCache[{Rational[32, 5], Rational[24, 5]}, {6.4, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[24, 5]}, {5.6, 4.8}], 
+       NCache[{Rational[32, 5], Rational[28, 5]}, {6.4, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[28, 5]}, {5.6, 5.6}], 
+       NCache[{Rational[32, 5], Rational[32, 5]}, {6.4, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[32, 5]}, {5.6, 6.4}], 
+       NCache[{Rational[32, 5], Rational[36, 5]}, {6.4, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[36, 5]}, {5.6, 7.2}], 
+       NCache[{Rational[32, 5], 8}, {6.4, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[28, 5], 8}, {5.6, 8}], 
+       NCache[{Rational[32, 5], Rational[44, 5]}, {6.4, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[28, 5], Rational[44, 5]}, {5.6, 8.8}], 
+       NCache[{Rational[32, 5], Rational[48, 5]}, {6.4, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-48, 5]}, {6.4, -9.6}], 
+       NCache[{Rational[36, 5], Rational[-44, 5]}, {7.2, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-44, 5]}, {6.4, -8.8}], 
+       NCache[{Rational[36, 5], -8}, {7.2, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], -8}, {6.4, -8}], 
+       NCache[{Rational[36, 5], Rational[-36, 5]}, {7.2, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-36, 5]}, {6.4, -7.2}], 
+       NCache[{Rational[36, 5], Rational[-32, 5]}, {7.2, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-32, 5]}, {6.4, -6.4}], 
+       NCache[{Rational[36, 5], Rational[-28, 5]}, {7.2, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-28, 5]}, {6.4, -5.6}], 
+       NCache[{Rational[36, 5], Rational[-24, 5]}, {7.2, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-24, 5]}, {6.4, -4.8}], 
+       NCache[{Rational[36, 5], -4}, {7.2, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], -4}, {6.4, -4}], 
+       NCache[{Rational[36, 5], Rational[-16, 5]}, {7.2, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-16, 5]}, {6.4, -3.2}], 
+       NCache[{Rational[36, 5], Rational[-12, 5]}, {7.2, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-12, 5]}, {6.4, -2.4}], 
+       NCache[{Rational[36, 5], Rational[-8, 5]}, {7.2, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-8, 5]}, {6.4, -1.6}], 
+       NCache[{Rational[36, 5], Rational[-4, 5]}, {7.2, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[-4, 5]}, {6.4, -0.8}], 
+       NCache[{Rational[36, 5], 0}, {7.2, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], 0}, {6.4, 0}], 
+       NCache[{Rational[36, 5], Rational[4, 5]}, {7.2, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[2, 15], 0.13333333333333333`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[4, 5]}, {6.4, 0.8}], 
+       NCache[{Rational[36, 5], Rational[8, 5]}, {7.2, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[8, 5]}, {6.4, 1.6}], 
+       NCache[{Rational[36, 5], Rational[12, 5]}, {7.2, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[12, 5]}, {6.4, 2.4}], 
+       NCache[{Rational[36, 5], Rational[16, 5]}, {7.2, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[16, 5]}, {6.4, 3.2}], 
+       NCache[{Rational[36, 5], 4}, {7.2, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], 4}, {6.4, 4}], 
+       NCache[{Rational[36, 5], Rational[24, 5]}, {7.2, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[24, 5]}, {6.4, 4.8}], 
+       NCache[{Rational[36, 5], Rational[28, 5]}, {7.2, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[28, 5]}, {6.4, 5.6}], 
+       NCache[{Rational[36, 5], Rational[32, 5]}, {7.2, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[32, 5]}, {6.4, 6.4}], 
+       NCache[{Rational[36, 5], Rational[36, 5]}, {7.2, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[36, 5]}, {6.4, 7.2}], 
+       NCache[{Rational[36, 5], 8}, {7.2, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[32, 5], 8}, {6.4, 8}], 
+       NCache[{Rational[36, 5], Rational[44, 5]}, {7.2, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[7, 30], 0.23333333333333334`]], 
+      RectangleBox[NCache[{Rational[32, 5], Rational[44, 5]}, {6.4, 8.8}], 
+       NCache[{Rational[36, 5], Rational[48, 5]}, {7.2, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-48, 5]}, {7.2, -9.6}], 
+       NCache[{8, Rational[-44, 5]}, {8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[36, 5], Rational[-44, 5]}, {7.2, -8.8}], {8, -8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], -8}, {7.2, -8}], 
+       NCache[{8, Rational[-36, 5]}, {8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-36, 5]}, {7.2, -7.2}], 
+       NCache[{8, Rational[-32, 5]}, {8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-32, 5]}, {7.2, -6.4}], 
+       NCache[{8, Rational[-28, 5]}, {8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-28, 5]}, {7.2, -5.6}], 
+       NCache[{8, Rational[-24, 5]}, {8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[36, 5], Rational[-24, 5]}, {7.2, -4.8}], {8, -4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], -4}, {7.2, -4}], 
+       NCache[{8, Rational[-16, 5]}, {8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-16, 5]}, {7.2, -3.2}], 
+       NCache[{8, Rational[-12, 5]}, {8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-12, 5]}, {7.2, -2.4}], 
+       NCache[{8, Rational[-8, 5]}, {8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[-8, 5]}, {7.2, -1.6}], 
+       NCache[{8, Rational[-4, 5]}, {8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[36, 5], Rational[-4, 5]}, {7.2, -0.8}], {8, 0}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], 0}, {7.2, 0}], 
+       NCache[{8, Rational[4, 5]}, {8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[4, 5]}, {7.2, 0.8}], 
+       NCache[{8, Rational[8, 5]}, {8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[8, 5]}, {7.2, 1.6}], 
+       NCache[{8, Rational[12, 5]}, {8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[12, 5]}, {7.2, 2.4}], 
+       NCache[{8, Rational[16, 5]}, {8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[
+       NCache[{Rational[36, 5], Rational[16, 5]}, {7.2, 3.2}], {8, 4}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], 4}, {7.2, 4}], 
+       NCache[{8, Rational[24, 5]}, {8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[24, 5]}, {7.2, 4.8}], 
+       NCache[{8, Rational[28, 5]}, {8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[28, 5]}, {7.2, 5.6}], 
+       NCache[{8, Rational[32, 5]}, {8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[32, 5]}, {7.2, 6.4}], 
+       NCache[{8, Rational[36, 5]}, {8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[
+       NCache[{Rational[36, 5], Rational[36, 5]}, {7.2, 7.2}], {8, 8}]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[36, 5], 8}, {7.2, 8}], 
+       NCache[{8, Rational[44, 5]}, {8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[36, 5], Rational[44, 5]}, {7.2, 8.8}], 
+       NCache[{8, Rational[48, 5]}, {8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{8, Rational[-48, 5]}, {8, -9.6}], 
+       NCache[{Rational[44, 5], Rational[-44, 5]}, {8.8, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-44, 5]}, {8, -8.8}], 
+       NCache[{Rational[44, 5], -8}, {8.8, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{8, -8}, 
+       NCache[{Rational[44, 5], Rational[-36, 5]}, {8.8, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-36, 5]}, {8, -7.2}], 
+       NCache[{Rational[44, 5], Rational[-32, 5]}, {8.8, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-32, 5]}, {8, -6.4}], 
+       NCache[{Rational[44, 5], Rational[-28, 5]}, {8.8, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-28, 5]}, {8, -5.6}], 
+       NCache[{Rational[44, 5], Rational[-24, 5]}, {8.8, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-24, 5]}, {8, -4.8}], 
+       NCache[{Rational[44, 5], -4}, {8.8, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{8, -4}, 
+       NCache[{Rational[44, 5], Rational[-16, 5]}, {8.8, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-16, 5]}, {8, -3.2}], 
+       NCache[{Rational[44, 5], Rational[-12, 5]}, {8.8, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-12, 5]}, {8, -2.4}], 
+       NCache[{Rational[44, 5], Rational[-8, 5]}, {8.8, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-8, 5]}, {8, -1.6}], 
+       NCache[{Rational[44, 5], Rational[-4, 5]}, {8.8, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[-4, 5]}, {8, -0.8}], 
+       NCache[{Rational[44, 5], 0}, {8.8, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{8, 0}, 
+       NCache[{Rational[44, 5], Rational[4, 5]}, {8.8, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[4, 5]}, {8, 0.8}], 
+       NCache[{Rational[44, 5], Rational[8, 5]}, {8.8, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[8, 5]}, {8, 1.6}], 
+       NCache[{Rational[44, 5], Rational[12, 5]}, {8.8, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[12, 5]}, {8, 2.4}], 
+       NCache[{Rational[44, 5], Rational[16, 5]}, {8.8, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[16, 5]}, {8, 3.2}], 
+       NCache[{Rational[44, 5], 4}, {8.8, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[{8, 4}, 
+       NCache[{Rational[44, 5], Rational[24, 5]}, {8.8, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{8, Rational[24, 5]}, {8, 4.8}], 
+       NCache[{Rational[44, 5], Rational[28, 5]}, {8.8, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{8, Rational[28, 5]}, {8, 5.6}], 
+       NCache[{Rational[44, 5], Rational[32, 5]}, {8.8, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{8, Rational[32, 5]}, {8, 6.4}], 
+       NCache[{Rational[44, 5], Rational[36, 5]}, {8.8, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{8, Rational[36, 5]}, {8, 7.2}], 
+       NCache[{Rational[44, 5], 8}, {8.8, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[{8, 8}, 
+       NCache[{Rational[44, 5], Rational[44, 5]}, {8.8, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{8, Rational[44, 5]}, {8, 8.8}], 
+       NCache[{Rational[44, 5], Rational[48, 5]}, {8.8, 9.6}]]}}, {
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-48, 5]}, {8.8, -9.6}], 
+       NCache[{Rational[48, 5], Rational[-44, 5]}, {9.6, -8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-44, 5]}, {8.8, -8.8}], 
+       NCache[{Rational[48, 5], -8}, {9.6, -8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], -8}, {8.8, -8}], 
+       NCache[{Rational[48, 5], Rational[-36, 5]}, {9.6, -7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-36, 5]}, {8.8, -7.2}], 
+       NCache[{Rational[48, 5], Rational[-32, 5]}, {9.6, -6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-32, 5]}, {8.8, -6.4}], 
+       NCache[{Rational[48, 5], Rational[-28, 5]}, {9.6, -5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-28, 5]}, {8.8, -5.6}], 
+       NCache[{Rational[48, 5], Rational[-24, 5]}, {9.6, -4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-24, 5]}, {8.8, -4.8}], 
+       NCache[{Rational[48, 5], -4}, {9.6, -4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], -4}, {8.8, -4}], 
+       NCache[{Rational[48, 5], Rational[-16, 5]}, {9.6, -3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-16, 5]}, {8.8, -3.2}], 
+       NCache[{Rational[48, 5], Rational[-12, 5]}, {9.6, -2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-12, 5]}, {8.8, -2.4}], 
+       NCache[{Rational[48, 5], Rational[-8, 5]}, {9.6, -1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-8, 5]}, {8.8, -1.6}], 
+       NCache[{Rational[48, 5], Rational[-4, 5]}, {9.6, -0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[-4, 5]}, {8.8, -0.8}], 
+       NCache[{Rational[48, 5], 0}, {9.6, 0}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], 0}, {8.8, 0}], 
+       NCache[{Rational[48, 5], Rational[4, 5]}, {9.6, 0.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[4, 5]}, {8.8, 0.8}], 
+       NCache[{Rational[48, 5], Rational[8, 5]}, {9.6, 1.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[8, 5]}, {8.8, 1.6}], 
+       NCache[{Rational[48, 5], Rational[12, 5]}, {9.6, 2.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[12, 5]}, {8.8, 2.4}], 
+       NCache[{Rational[48, 5], Rational[16, 5]}, {9.6, 3.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[16, 5]}, {8.8, 3.2}], 
+       NCache[{Rational[48, 5], 4}, {9.6, 4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], 4}, {8.8, 4}], 
+       NCache[{Rational[48, 5], Rational[24, 5]}, {9.6, 4.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 6], 0.16666666666666666`]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[24, 5]}, {8.8, 4.8}], 
+       NCache[{Rational[48, 5], Rational[28, 5]}, {9.6, 5.6}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[28, 5]}, {8.8, 5.6}], 
+       NCache[{Rational[48, 5], Rational[32, 5]}, {9.6, 6.4}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[32, 5]}, {8.8, 6.4}], 
+       NCache[{Rational[48, 5], Rational[36, 5]}, {9.6, 7.2}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[36, 5]}, {8.8, 7.2}], 
+       NCache[{Rational[48, 5], 8}, {9.6, 8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], 8}, {8.8, 8}], 
+       NCache[{Rational[48, 5], Rational[44, 5]}, {9.6, 8.8}]]}, 
+     {Opacity[
+       NCache[
+        Rational[1, 5], 0.2]], 
+      RectangleBox[NCache[{Rational[44, 5], Rational[44, 5]}, {8.8, 8.8}], 
+       NCache[{Rational[48, 5], Rational[48, 5]}, {9.6, 9.6}]]}}}, 
+   GraphicsComplexBox[CompressedData["
+1:eJxdmAl0jdcWx5GIKXLvzSAyDyjq1dAKMdTZhhLhxdRnal8rhrYUQdTwDFVj
+axYpT720nrJQY4sQ09k1diC0NSemlJChXBIhEc+79+y9P2vlrm+tL8m9+c45
+e/j//vtGDU3qO6JKpUqVfq9cqZL7Tq/68OW1pNRrSdFYPfmPo+9MqgfpY7Jc
+VxTafW7ZfRLrQezczrFzj0VhSv3urqseZC5Z2nD75ig8/pvTUeVsNHQ3b0Th
+UkfP4sk/RMPNn0dNHeYZhQ3MG9Hw6F99c+vejMSDNxq5rmjIMgtEonnbk/+/
+SyQ6h+891GJ2FL8fgQe2+vtNHBAFZXOWdCuqFoHxtA5srBP16Zml4ZizrXxu
+7NZIKPJz/xSGrcLPRIxuHwlmmymhSOeLhMrmHorX6bnwaM+BP/ITQlDnNDmS
+szUcFu98unDnlGCceWbp4LnlYWCOnx6Emy+k9Z88OAwKE7a2236/Ljak50LE
+iCchI54E4vHm3seae4dC0PzEuvMTA7Hz1Np3YlJDOH510Dvtx5ppPwZD8LZz
+QdvOBeA4ei48ODWz8NRMf9zn/ty0IDD3dv545XlX1xUEL8zLD7fMabt5Ttu6
+YMtf55O/zhd3mucGQgcTB18sHnGo7YygQIgzvzv4vIF8Xgdm0D7gQVg/j2mn
+7Hjx3TMX3j0TAPdG7cgdtcMHJ/au9knvagEQbc7lTfnY4A+pJoC1kGrEH3qZ
+59dAFZX5S6/P/aBNE/dP1bB/csyA5Bg/2GPW8cKTA6afGDDdF46449rEExuU
+tRv0WpIvPDfn8cBl5rm+cNYEyAM7Z86YVPl7B3Q1z6+MQ+u6A+kAc0ushD3o
+XFDYImbX5J7Pdds5Aa7LAYnzMofMyyzXDRf8OquXjwPCzcbL9f/MOnbIN/dn
+Otu9znY7jDVxf6q/UpentPzUDt+b/ZZo9+k/6W2HPuaHYj3a/edWdmht1i3S
+RdVCluXa7NDZ/P5QU3ztHF+nHmI2aoMdRe3PFrW/q0ege0c22Gqen6tvmHPa
+YLXZ321NfWLjeF7RJ8vODYwItsE35vMX9XsPA95/GGCDf3cMO++69O5H7sL2
+gZY1x/ef2WmbPrKu2b1aZT5A+7jcXt7fVcu8r97n/z9N/6/k+Wfp+Sqe159O
+6yvZXwrtT33A+z9G+1eJfL5f6XyqMp+/Jp1fFXN86DwP1ViOH9VjkarO8R1M
+8VVrOf6HKf5K8jOZ8qPoXA6gPD5TjTi/r1J+ldTDfaoHNYzrJZTqBbpwPfWk
+eoIUrrdsqjdoyPXoYdbxhFNcr0epXmEg1/MBqmcArvc3qd5B+qE39QP04H5Z
+Tf0CTQ7/L2e4PQAaUT8B6U0AjMmJf+KVWhsuc/8VUv/B+tjeoY186oDkQfr1
+lCkkO68XyHcHlHC/SxzSWQ8o3r7wHeuFnfQCslhPZN8ZrDcZpDdQQY+gNutV
+KOkVvMV6Jvs6wXoXQnoHFfQQtrBe/kV6CZ+xnso6yHq7lPQWKugx91Uk5ycU
+WrOeyzp/st4/Jr2HCjyAg8yLcuIFPGSeyDrxzJt44g0cYh5RfURCBV6B8OwW
+8QxOMO9k3Qo8BAfzsg3xEmoyT/cTT0F4m0q8ld9RfufPo3yen4fyPF4PZT3e
+j8VF3i8yf5mD0ejk8/B5Uc7L/EXmr8TL4iTzF5m/Fue/5Xgzf7GY88H5sjjJ
+/EXmr8X1+5xv5i8yf6VeLE4yf5H5a3E9lOvtGNUjMn+lXi3u1aJ6xhCuZ+F6
+Idf7fuoHirerH7hfLO4xf5H5y7oViH2434q3BBZtCQy0OMX85fM6LB9QQPwF
+5i/e5f6/SvqAiawPrB8o+sE8xpWsL+ILurH+MI+xLesT6xeKfjGPyee49O1L
+0kO8w3rIeomil8xfjmcly1dcYL1lPUbRY9Yl9DX3cpVFeo5JrOdDJ1RtkTHb
+jqL3dF47vm7w9Fgxf5H5q5KIHziQ+cF8QeEL85fj62T9t2Ee84n5hcKvvNUz
+XZcNPzM/5KorpLN4I454xzzGBObhqaZLqjhCbSi8HEI8xSqdiKd7iLfYiHis
+mMdYgce4ozrxGjzdT7ThAvO8k5r5jJnMd1lP+C/7qcf+QPZ7m/ar5Txj6Dzi
+N1D8BvMaT7MfoXqx4X1zfyB+BsXPjOF4M6/FD2Ec+6EK+dKJnE/xT5LvD9hf
+Mb/xOfsv9mco/kzq6Tz7uUSutwD2e+wHUfwg8xsvs19kP4niJ09wfR9kv8l+
+FMWPduD+aMV+VfqnK/vZOO6vZex32Q+j+OEL3K+32S9X6Gd+Xh2+2/ER64Gc
+k/nMv/viZtYTH/bz7PetfaWzHqXzPCB6VcDzQk3WsyCeJ3jesPZ1lPWwLs8j
+FfQSN7GeFvA8w/OOtc4R1uOFPA9V0GveZwTfQ2TestYRHjzieawCL2Sew1Ke
+53jes9apwCOZF1HmxQo8k3kTb/C8eX3xlDdyzkRb6/L8ijK/8nyLMt8Kf2X+
+XWNeV5T8PT5yVmjjHlfVK/GTxqwfXg9bne77IP/SVfXNyHmboXE9DMtYEZKx
+IkvJvm4cezPbdakPZ3l9NMsrGr8YNu301Neuqepjm/a/5pqXr18zLyX7O+z1
+bEKDWdfVt7sT1mR/F4mrVgw9eLX4hjo8o3tyQf1I7LF8k+fU+JtK4tNs19c/
+L115UzWOOPn8wIZwXBacnPZi8y21qJ++uyrWxck++8PnFdxSko+BV8Yd39Mw
+R60q6eL1+7MQTL51yHX9qZ5sCy7ZFhyMqR3yVnbI+1NJ/u0dk1o77bfVpX/8
+fHjRP4NwzovjoWvey1Uz24XHVy+ogx9+4H7lKqm3/XFj0uPG5KqALWfquC5L
+d98xn6uDuYE9Zn5/+64SzpXvDCvdGZanusa5X/641sQ7T0n9v9Ei/X7QoHy1
+wn3s5X4YauJbwOfxxbMxPT/z3lSo4rdOiPa67sCOv45b2XhPoZroikKLSw68
+YcL7l5L+W1c52HU5VfMXj5q9eGTDniaeTosDR71Go9dop/Ib7wgc77BZnDlv
+nlMbZ68det6576E6+PcWo55meeNfJr4PlejDqI39XdcjlapKV6rSWri445A7
+56KLVI3d5w+W7a2Jq0x8i9THJr410MvUVbFaYc5dA7/atfZGJyxWV8vrVOm6
+pToGBrhfj9Vyc+DqCO9Pev7quseqT9qqmDlbq+Heei9c12O1P6X7vpTu1XCk
+iXOJEr1781x4jl5UoorDZ5xetdvL4u4Q8zkvzDP5eKJIT6ti30+7dktY8lSd
++jwmznnZE+v3sI0cOrpUNfip3+z2DTzxa7PPUiV6O9Gco1QtM+fyQO+fHkzq
+dKxMjdVNt0yv64GRJl/POD5VLJ9wz8StMtq9Gv8Rp56rDGdSpO+0ynjbxPm5
+Er2/Zfb1QsWZPFXCW8MyP84re6Eu0F0n0N/hAn1Oi2+5Qs/RSM+FqrSOdtK6
+1vcD5KuqQCDtU39C+wYPOodeQ+eCj+iceuMPx87fKfGA7dAhcNOGUi1z4yqK
+i+Y4AcdNZ1IcoTvFVZOPrgo5FHc9mvJgff9QTnmCGMqbFt82jPKqOc/AedeD
+qA4glupCr6I6AV+qG51DdQQpVFf6v1RnUGbyV6THUx3CCqpL7Ut1CvOpbjXX
+MXBda/GheVT3Oo/6wvo+JIz6Bo5QH+kW1GfAfafFF2dRX+r0cxtyPS47oGri
+tfVlkwr1K9TXEEx9rrnvoSXpgBYfvpp0Qvcg3YBi0hEt8zXF966eQLpjff8S
+TLoEe0intMwFw0nHNOsazCad09mke+BNOqhlDkkhndSsmzCBdFT/h3QV3iad
+1TL35JMO64Wky7CcdFo3Jd2Gv5GOa5mzupPOa9Z9WE0c0BuJC7CfOKFlzssm
+jugaxBVgzuhRxB24QhzSMs9SfLN0GnEL2hDHdEPiGnQjzmmZT5mDWu7yd/mc
+/J88R54r68i6sg/Zl+xT9i3nkHPJOeXcEgeJi8RJ4iZxlLhKnCXukgfJi+RJ
+8iZ5lLxKniXvUgdSF1InUjdSR1JXj6cPHjB2XK5e36vgl9qZL+tQ6lLqVOq2
+37pUbx10T3+xPH1X4VsBcHbqoqi0ffd4fX/wcgZmxzTLY9172QfSF4V3Rj7p
+8Hq+Lmt+/1KDL/2gzcW5vzU6m69jJ91dgHY/q6+kz+qae6EuMnFxwE/EU51A
+PIUuxFOdTDy1+lb6uKbxrff1M2MQ7eBMzN7Z49UH+hrNCTClX03X5dRdLpZ1
+vlhm43w5re9BmywIm5M9wan7uXHqb7N0RHRlOvFWHyfeWrojOiS6JDoluiU6
+lsK6JjoXkVU6c9ShYt3I9+RvgzZVh71DaqUPqVWiYyd2bj2xczVLZ0V3R2z9
+MdlzYYlOXZwQkPHDS50W3c7cEj3g4vyn2vF1vd57LrzkgHBBOCJcEc4Id4RD
+wiXhlHBLOCZcE+4JBy0uMieFm8JR4apwVrgrHBYuC6eF28Jx4bpwXrgvPqAG
+nRsvURwsHyG+QnyG+I7FFEccQ3G1fIr4Fs4DplNeVCTlCV+hvFk+SXyT+Cjx
+VeKzxHeJDxNfJj5NfJv4OvF54vvEB4ovFJ8ovlF8pPhK8ZniO8WHii8Vnyq+
+VXxsS+pLVNSnivsWC6iPLR8svpjy7Y8+pAPqc9IJfJt0w/LV4rPFd4sPTyMd
+wjLSJcu3i48XXy8+X3y/zAEyF8icIHODzBEyV8icIXOHzCEyl8icInOLzDEy
+18icI3OPzEEyF8mcJHOTzFEyV8mcJXOXzGEyl8mcJnObzHEy18mcJ3OfzIH/
+B69s2ks=
+    "], {{}, {}, 
+     TagBox[
+      TooltipBox[
+       {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], 
+        LineBox[{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+         18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 
+         35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 
+         52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 
+         69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 
+         86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 
+         102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115,
+          116, 117, 118, 119, 120}], 
+        LineBox[{121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 
+         133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146,
+          147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 
+         160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173,
+          174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 
+         187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200,
+          201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 
+         214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227,
+          228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 
+         241}]},
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{
+             RowBox[{
+               RowBox[{"-", "15"}], "+", 
+               SuperscriptBox[
+                TagBox["x1", HoldForm], "2"], "-", 
+               SuperscriptBox[
+                TagBox["x2", HoldForm], "2"]}], "\[Equal]", "0"}], ",", 
+           RowBox[{
+             RowBox[{"4", "+", 
+               RowBox[{
+                 TagBox["x1", HoldForm], " ", 
+                 TagBox["x2", HoldForm]}]}], "\[Equal]", "0"}]}], "}"}]],
+      Annotation[#, {-15 + HoldForm[$CellContext`x1]^2 - 
+         HoldForm[$CellContext`x2]^2 == 0, 
+        4 + HoldForm[$CellContext`x1] HoldForm[$CellContext`x2] == 0}, 
+       "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       {RGBColor[0.880722, 0.611041, 0.142051], AbsoluteThickness[1.6], 
+        LineBox[CompressedData["
+1:eJwNzEVWQgEAAMCP3dhdKHZ3J2IndisH0OfV7dZZzHYiyfvEXSgIggceeeKZ
+F155450PPvnimx9++SMQhEghlTTSySCTLLLJIZc88ikgTCFFFFNCKWWUU0El
+VVRTQy111NNAIxGaaCZKC6200U4HnXTRTQ+99NHPAIMMMcwIo4wxzgSTTDHN
+DLPMMc8Ci8RYIs4yK6yyxjobbLLFNjvsskeCfQ445IhjTjjljHMuuOSKa264
+Jck/pKIjEg==
+         "]], LineBox[CompressedData["
+1:eJwVy8VRQwEAQMFPKbRECbgnuEtwd3dJgru7u1MRy2Fn3uUlJoeS8hOCIAiT
+IlJJI50MMskimxxyyeN/ChGmgEKKKKaEUsoop4JKqqimhlrqqCdCA4000UwL
+rbTRTgeddNFND7300c8AgwwxzAijjDHOBJNMMc0Ms8wxzwKLRIkRZ4llVlhl
+jXU22GSLbXbYZY99DjjkiGNOOOWMcy645IprbrjljnseeOSJZ1545Y13Pvjk
+i29++OUPv6lGLA==
+         "]]},
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{
+             RowBox[{
+               RowBox[{"-", "15"}], "+", 
+               SuperscriptBox[
+                TagBox["x1", HoldForm], "2"], "-", 
+               SuperscriptBox[
+                TagBox["x2", HoldForm], "2"]}], "\[Equal]", "0"}], ",", 
+           RowBox[{
+             RowBox[{"4", "+", 
+               RowBox[{
+                 TagBox["x1", HoldForm], " ", 
+                 TagBox["x2", HoldForm]}]}], "\[Equal]", "0"}]}], "}"}]],
+      Annotation[#, {-15 + HoldForm[$CellContext`x1]^2 - 
+         HoldForm[$CellContext`x2]^2 == 0, 
+        4 + HoldForm[$CellContext`x1] HoldForm[$CellContext`x2] == 0}, 
+       "Tooltip"]& ]}]}]], "Output",
+ CellChangeTimes->{
+  3.7879078396925573`*^9, {3.787907870005291*^9, 3.787907944185534*^9}, {
+   3.7879080110373573`*^9, 3.787908040396037*^9}, 3.7879081521804304`*^9, 
+   3.7879082159750795`*^9, 3.787909598392149*^9, 3.787909706198315*^9, 
+   3.787909750546852*^9, {3.787909781370615*^9, 3.7879097954434195`*^9}, {
+   3.787909842676121*^9, 3.7879099064407682`*^9}},
+ CellLabel->
+  "Out[1033]=",ExpressionUUID->"71778416-0de1-44a0-8455-6a4bb76ed031"]
+}, Open  ]]
+},
+WindowSize->{1440, 800},
+WindowMargins->{{-9, Automatic}, {Automatic, -9}},
+Magnification:>1.9 Inherited,
+FrontEndVersion->"11.3 for Microsoft Windows (32-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6309, 173, 1506, "Input",ExpressionUUID->"5fdf0b9e-d1fd-4a2c-9bd1-0f6b54accdb2"],
+Cell[6892, 197, 480, 8, 85, "Output",ExpressionUUID->"55f31ed3-378e-45d2-9259-a9529098dda6"],
+Cell[7375, 207, 127074, 3044, 772, "Output",ExpressionUUID->"71778416-0de1-44a0-8455-6a4bb76ed031"]
+}, Open  ]]
+}
+]
+*)
+

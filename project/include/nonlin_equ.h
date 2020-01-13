@@ -7,9 +7,9 @@
 #include <cstring>
 #include <vector>
 
-#define N 25
+#define N 100
 #define eps 1e-6
-#define NUM 1
+#define NUM 0
 typedef double(*fun) (double x);
 typedef double(*f2p) (double x1, double x2);
 using namespace std;

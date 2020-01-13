@@ -115,6 +115,8 @@ vector<double> tan_method(double a_, double b_, fun f, fun df, double x)
 					}
 					else
 						x = hord(a, b, f);
+					// cout << "Out of range!" << endl;
+					// return res;
 				}
 				iter[k]++;
 				if (iter[k] > 100)
@@ -196,25 +198,27 @@ int		local2d(double a1, double b1, double a2, double b2, f2p f1, f2p f2)
 
 vector<vector<double>> newton_method(double r1, double r2, f2p f1, f2p f2, f2p df11, f2p df12, f2p df21, f2p df22)
 {
+    ofstream out("iter.txt");
+    
 	vector<vector<double>> res;
 	vector<vector<double>> Y;
 	vector<vector<double>> tabl (2, vector<double> (N + 1));
-	vector<double> x(2), iter(0);
+	vector<double> x(2);
 	vector<double> x1(2), v(2);
 	
 	tabl[0] = val_table(-r1, r1, N);
 	tabl[1] = val_table(-r2, r2, N);
-	int k = 0;
+	out << N << endl;	
+	int k = 0, iter = 0;
 	for (size_t i = 0; i < N; i++)
 	{
 		for (size_t j = 0; j < N; j++)
 		{
-			if (local2d(tabl[0][i], tabl[1][j], tabl[0][i + 1], tabl[1][j + 1], f1, f2))
-			{
-				iter.resize(k);
-				iter.push_back(0);
+			// if (local2d(tabl[0][i], tabl[1][j], tabl[0][i + 1], tabl[1][j + 1], f1, f2))
+			// {
 				// cout << tabl[0][i] << "   " << tabl[0][i + 1] << endl;
 				// cout << tabl[1][j] << "   " << tabl[1][j + 1] << endl << endl;;
+				iter = 0;
 				x = {(tabl[0][i] + tabl[0][i + 1]) / 2, (tabl[1][j] + tabl[1][j + 1]) / 2};
 				do
 				{
@@ -224,23 +228,25 @@ vector<vector<double>> newton_method(double r1, double r2, f2p f1, f2p f2, f2p d
 					v[0] = f1(x1[0], x1[1]);
 					v[1] = f2(x1[0], x1[1]);
 					x = x1;
-					iter[k]++;
+					iter++;
 				} while (norm_inf_v(v) > eps);
+				out << iter << " ";
 				res.resize(k, vector<double>(2));
 				res.push_back(x);
 				k++;
-				i++;
-			}
+				// i++;
+			// }
 		}
+		out << endl;
 	}
-	for (size_t i = 0; i < res.size(); i++)
-	{
-		cout << "( x  y ) = (";
-		for (size_t j = 0; j < res[i].size(); j++)
-		{
-			cout << " " << res[i][j] << " ";
-		}
-		cout << ")" << ", iter = " << iter[i] << endl;
-	}
+// 	for (size_t i = 0; i < res.size(); i++)
+// 	{
+// 		cout << "( x  y ) = (";
+// 		for (size_t j = 0; j < res.size(); j++)
+// 		{
+// 			cout << i <<"," << j << " ==>> " << iter[i * iter.size() + j] << endl;;
+// 		}
+// 		cout << ")" << ", iter = " << iter[i] << endl;
+// 	}
 	return (res);
 }
